@@ -10,28 +10,29 @@ invoices = Blueprint("invoices", __name__, url_prefix="/api/v1/invoices")
 @invoices.get("/")
 @jwt_required()
 def get_all_invoices():
-    #pagination settings 
-    page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 5, type=int)
-
+    # pagination settings
+    page = request.args.get("page", 1, type=int)
+    per_page = request.args.get("per_page", 5, type=int)
 
     customer_id = get_jwt_identity()
-    invoices = Invoice.query.filter_by(customer_id=customer_id).paginate(page=page, per_page=per_page)
+    invoices = Invoice.query.filter_by(customer_id=customer_id).paginate(
+        page=page, per_page=per_page
+    )
 
     list_invoices = []
 
     for invoice in invoices.items:
         list_invoices.append(
             {
-                'customer': f"{invoice.customer.first_name} {invoice.customer.last_name}",
-                'amount': invoice.amount,
-                'remaining_balance': invoice.remaining_balance,
-                'created_at': invoice.created_at,
-                'updated_at': invoice.updated_at,
+                "customer": f"{invoice.customer.first_name} {invoice.customer.last_name}",
+                "amount": invoice.amount,
+                "remaining_balance": invoice.remaining_balance,
+                "created_at": invoice.created_at,
+                "updated_at": invoice.updated_at,
             }
         )
 
-    #sent meta data to the frontend
+    # sent meta data to the frontend
     meta = {
         "page": invoices.page,
         "pages": invoices.pages,
@@ -42,8 +43,7 @@ def get_all_invoices():
         "next": invoices.next_num,
     }
 
-    return jsonify({'invoices': list_invoices, 'meta': meta}), HTTP_200_OK
-
+    return jsonify({"invoices": list_invoices, "meta": meta}), HTTP_200_OK
 
 
 @invoices.get("/<int:id>")
@@ -53,14 +53,17 @@ def get_invoice(id):
     invoice = Invoice.query.filter_by(customer_id=customer_id, id=id).first()
 
     if not invoice:
-         return jsonify({'message':'Invoice not found'}),HTTP_404_NOT_FOUND
+        return jsonify({"message": "Invoice not found"}), HTTP_404_NOT_FOUND
 
-    return jsonify(
-        {
-                'customer': f"{invoice.customer.first_name} {invoice.customer.last_name}",
-                'amount': invoice.amount,
-                'remaining_balance': invoice.remaining_balance,
-                'created_at': invoice.created_at,
-                'updated_at': invoice.updated_at,
-        }
-    ), HTTP_200_OK
+    return (
+        jsonify(
+            {
+                "customer": f"{invoice.customer.first_name} {invoice.customer.last_name}",
+                "amount": invoice.amount,
+                "remaining_balance": invoice.remaining_balance,
+                "created_at": invoice.created_at,
+                "updated_at": invoice.updated_at,
+            }
+        ),
+        HTTP_200_OK,
+    )
