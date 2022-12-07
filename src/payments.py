@@ -106,6 +106,7 @@ def paid_invoice():
         elif invoice.remaining_balance == 0.0:
             continue
 
+    db.session.add(payment)
     db.session.commit()
 
     if payment.amount == 0:

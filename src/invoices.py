@@ -24,11 +24,13 @@ def get_all_invoices():
     for invoice in invoices.items:
         list_invoices.append(
             {
+                "invoice_id" : invoice.id,
                 "customer": f"{invoice.customer.first_name} {invoice.customer.last_name}",
                 "amount": invoice.amount,
                 "remaining_balance": invoice.remaining_balance,
                 "created_at": invoice.created_at,
                 "updated_at": invoice.updated_at,
+
             }
         )
 

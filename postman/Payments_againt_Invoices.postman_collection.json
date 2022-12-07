@@ -1,0 +1,490 @@
+{
+	"info": {
+		"_postman_id": "d4a83200-e378-4fa8-a385-24e76960008c",
+		"name": "Payments_againt_Invoices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24685262"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Jazlin\",\n    \"last_name\": \"Moreno\",\n    \"email\": \"jazlin.moreno@outlook.com\",\n    \"password\": \"$$MariaLeticia13$$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"email\": \"jarlinton.zea@outlook.com\",\n    \"password\": \"$$MariaLeticia13$$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2OTk2NzUxOCwianRpIjoiNjQyY2Y0YmItMTI2YS00ODdhLTlmOWMtNTgyNzk2NjNjMzAyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjY5OTY3NTE4LCJleHAiOjE2Njk5Njg0MTh9.rdUCkqzQkbvikCCsBncIjYTvua5W1llsHzqirgybFQU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/auth/me",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyMDgzMCwianRpIjoiYjUwNjFmMjItYzdhMy00MzNjLTg3OTUtZDZjMWE2ZjU5NjA2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDIwODMwLCJleHAiOjE2NzA0MjE3MzB9.qyu6iPiXw4O9Pz6S4VPHW9LviKO_3oOCbJR2udplB10",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/auth/token/refresh",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Invoices",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyNDYzNywianRpIjoiMDg2MTM0MjYtMWQ5Yi00MDdkLWFkZjgtMjNhYTVmMmY4ZjI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDI0NjM3LCJleHAiOjE2NzA0MjU1Mzd9.UwPGl-E62oAZmT2eNPujx4RdW4zcvA7R8g_nGBTtk3E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/invoices/?page=1&per_page=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"invoices",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQxOTYzNiwianRpIjoiMzVkNWRkNjItYjM4YS00YTRjLTkyMGEtMTRmYTcxOTg2NmI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNjcwNDE5NjM2LCJleHAiOjE2NzA0MjA1MzZ9.hlZQMVP7otiWXeyAb5NvrywBnp1I9MR_d1DCKM1UEQY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/invoices/102",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"invoices",
+								"102"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyMTc4NiwianRpIjoiZTZmNTEwYjYtYzIzYi00NDg5LWFhOWUtNzg4MGNlZTU0YTliIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDIxNzg2LCJleHAiOjE2NzA0MjI2ODZ9.KELaKYKG0OCwgBMSvbE9mw02r-t6yh8nrtDmkKAt0ZU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 45000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/payments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								""
+							],
+							"query": [
+								{
+									"key": "amount_lte",
+									"value": "20000",
+									"disabled": true
+								},
+								{
+									"key": "invoice",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "amount_gte",
+									"value": "200",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyMzcxMiwianRpIjoiMGM5ZWI1MDUtYzU3OC00ZTEwLWE2NDMtN2EwZDEyZTg3YWNiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDIzNzEyLCJleHAiOjE2NzA0MjQ2MTJ9.HIeZhuekRsWcpefY91ywwwNZAul8aGdzxjDe-wHsP4I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/payments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								""
+							],
+							"query": [
+								{
+									"key": "amount_lte",
+									"value": "200",
+									"disabled": true
+								},
+								{
+									"key": "amount_gte",
+									"value": "200",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyMzcxMiwianRpIjoiMGM5ZWI1MDUtYzU3OC00ZTEwLWE2NDMtN2EwZDEyZTg3YWNiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDIzNzEyLCJleHAiOjE2NzA0MjQ2MTJ9.HIeZhuekRsWcpefY91ywwwNZAul8aGdzxjDe-wHsP4I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/payments/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyMjQ0OSwianRpIjoiOTdlMzc5ZWItODRiMS00MDdmLTg3OWItNDAxNmQ4ZGYzNjQ0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDIyNDQ5LCJleHAiOjE2NzA0MjMzNDl9.5Ufge8vUkkq4vxe5NSAj-IZLKyNT2inJzfdfVc0vPRM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 35000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/payments/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3MDQyMzcxMiwianRpIjoiMGM5ZWI1MDUtYzU3OC00ZTEwLWE2NDMtN2EwZDEyZTg3YWNiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjcwNDIzNzEyLCJleHAiOjE2NzA0MjQ2MTJ9.HIeZhuekRsWcpefY91ywwwNZAul8aGdzxjDe-wHsP4I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/payments/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
