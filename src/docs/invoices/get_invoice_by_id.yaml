@@ -1,0 +1,15 @@
+Redirect to a short url
+---
+tags:
+  - Invoices
+parameters:
+  - in: path
+    name: id
+    required: true
+
+responses:
+  200:
+    description: Redirects to the original link
+
+  404:
+    description: Record was not found

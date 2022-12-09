@@ -2,6 +2,7 @@ from src.constants.http_status_codes import *
 from flask import Blueprint, request, jsonify
 from src.database import Invoice
 from flask_jwt_extended import get_jwt_identity, jwt_required
+from flasgger import swag_from
 
 
 invoices = Blueprint("invoices", __name__, url_prefix="/api/v1/invoices")
@@ -24,13 +25,12 @@ def get_all_invoices():
     for invoice in invoices.items:
         list_invoices.append(
             {
-                "invoice_id" : invoice.id,
+                "invoice_id": invoice.id,
                 "customer": f"{invoice.customer.first_name} {invoice.customer.last_name}",
                 "amount": invoice.amount,
                 "remaining_balance": invoice.remaining_balance,
                 "created_at": invoice.created_at,
                 "updated_at": invoice.updated_at,
-
             }
         )
 
