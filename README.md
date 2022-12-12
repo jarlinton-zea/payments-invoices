@@ -105,6 +105,9 @@ flask run
  }
  ```
 
+Note >>> Import post collection from: ``` postman/Payments_againt_Invoices.postman_collection.json```
+
+
 License
 ---
 MIT
