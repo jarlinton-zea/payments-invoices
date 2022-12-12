@@ -91,19 +91,6 @@ flask run
 }
 ```
 
-#### Example Changedestination body
- ```'
- {
- 	"destination_address": "Mumbai"
- }
- ```
-
- #### Example Changestatus body
- ```'
- {
- 	"status": "Delivered"
- }
- ```
 
 Note >>> Import post collection from: ``` postman/Payments_againt_Invoices.postman_collection.json```
 
